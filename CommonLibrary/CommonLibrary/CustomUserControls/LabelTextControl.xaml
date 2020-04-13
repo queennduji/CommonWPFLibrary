@@ -6,12 +6,31 @@
              xmlns:local="clr-namespace:CommonLibrary.CustomUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style  TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Validation.ErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate >
+                                <TextBlock Name="ErrorBorder"  Width="10" Height="26" 
+                                           Background="Yellow" Margin="0,0,2,2" >
+                                </TextBlock>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Name="LayRoot">
             <TextBlock  Text="{Binding LeftLabelText}"  HorizontalAlignment="Center" Width="50" Visibility="{Binding LeftLabelVisibility}"></TextBlock>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding TopLabelText}"  HorizontalAlignment="Center" Visibility="{Binding TopLabelVisibility}"></TextBlock>
-                <TextBox Text ="{Binding InputBoxText}"  HorizontalAlignment="Center"></TextBox>
+                <TextBox Text ="{Binding InputBoxText,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center">
+                </TextBox>
             </StackPanel>
         </StackPanel>
     </Grid>

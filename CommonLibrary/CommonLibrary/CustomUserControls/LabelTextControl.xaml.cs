@@ -40,8 +40,6 @@ namespace CommonLibrary.CustomUserControls
         public static readonly DependencyProperty TopLabelTextProperty =
             DependencyProperty.Register("TopLabelText", typeof(string), typeof(LabelTextControl), new PropertyMetadata(string.Empty));
 
-
-
         public string LeftLabelText
         {
             get { return (string)GetValue(LeftLabelTextProperty); }
@@ -65,9 +63,6 @@ namespace CommonLibrary.CustomUserControls
         public static readonly DependencyProperty InputBoxTextProperty =
             DependencyProperty.Register("InputBoxText", typeof(string), typeof(LabelTextControl), new PropertyMetadata(string.Empty));
 
-
-
-
         public Visibility LeftLabelVisibility
         {
             get { return (Visibility)GetValue(LeftLabelVisibilityProperty); }
@@ -78,8 +73,6 @@ namespace CommonLibrary.CustomUserControls
         public static readonly DependencyProperty LeftLabelVisibilityProperty =
             DependencyProperty.Register("LeftLabelVisibility", typeof(Visibility), typeof(LabelTextControl), new PropertyMetadata(System.Windows.Visibility.Visible));
 
-
-
         public Visibility TopLabelVisibility
         {
             get { return (Visibility)GetValue(TopLabelVisibilityProperty); }
@@ -89,6 +82,27 @@ namespace CommonLibrary.CustomUserControls
         // Using a DependencyProperty as the backing store for TopLabelVisibility.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TopLabelVisibilityProperty =
             DependencyProperty.Register("TopLabelVisibility", typeof(Visibility), typeof(LabelTextControl), new PropertyMetadata(System.Windows.Visibility.Visible));
+
+        #region MyRegion
+
+        string IDataErrorInfo.Error => throw new NotImplementedException();
+
+        string IDataErrorInfo.this[string propertyName]
+        {
+            get
+            {
+                string error = null;
+
+                if (string.IsNullOrWhiteSpace(error))
+                {
+                    return propertyName + "cannot be empty";
+                }
+                return error;
+            }
+        }
+        #endregion 
+
+
 
 
 
