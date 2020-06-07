@@ -26,6 +26,7 @@ namespace CommonLibrary.CustomUserControls
             InitializeComponent();
             LayRoot.DataContext = this;
         }
+        //hello
 
         /// <summary>
         /// Dependency property for the top label text

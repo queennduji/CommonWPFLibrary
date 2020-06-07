@@ -49,6 +49,7 @@
     <Compile Include="CustomUserControls\LabelTextControl.xaml.cs">
       <DependentUpon>LabelTextControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JuneCS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
